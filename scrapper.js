@@ -68,6 +68,9 @@ module.exports = {
                                 console.log(`${image.url}\n`);
                                 var dir = `./public/images/${query}/`;
                                 var path = `${dir}${Math.floor((Math.random() * 10000) + 1).toString()}.${ext}`;
+                                if (!fs.existsSync('./public/images/')){
+                                    fs.mkdirSync('./public/images/');
+                                }
                                 if (!fs.existsSync(dir)){
                                     fs.mkdirSync(dir);
                                 } 
