@@ -1,0 +1,16 @@
+<ng-template #data>
+    <div class="col-md-4" *ngFor="let link of links">
+            <div class="thumbnail">
+                <a target="_blank" href="{{link}}">
+                    <img [src]="link" alt="{{folder}}" style="width:100%">
+                    <div class="caption">
+                        <p>{{ folder }}</p>
+                    </div>
+                </a>
+            </div>
+        </div>
+</ng-template>
+<div class="jumbotron" *ngIf="msg else data">
+    <h1>Error</h1> 
+    <p>{{ msg }}</p> 
+</div>

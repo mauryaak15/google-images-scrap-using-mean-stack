@@ -1,0 +1,9 @@
+<ul class="list-group" *ngIf="searches.length else msg">
+    <a *ngFor="let search of searches" [routerLink]="['/results', search.term]"><li class="list-group-item">{{ search.term }}</li></a>
+</ul>
+
+<ng-template #msg>
+    <div class="jumbotron">
+            <h3>No recent searches yet, please use search tab.</h3> 
+        </div>
+</ng-template>

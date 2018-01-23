@@ -1,0 +1,7 @@
+<form [formGroup]="myForm" (ngSubmit)="onSubmit()">
+    <div class="form-group">
+        <label for="query"></label>
+        <input type="text" name="query" id="query" class="form-control" formControlName="query">
+    </div>
+    <button class="btn btn-primary" type="submit" [disabled]="!flag || !myForm.valid">Search</button>
+</form>
