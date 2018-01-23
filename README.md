@@ -3,5 +3,5 @@
 <p>cd project directory</p>
 <p>npm install</p>
 <p>npm run build (for angular server, require only first time)</p>
-<p>in another terminal and project directory for npm start (node server)</p>
+<p>in another terminal and project directory execute npm start (node server)</p>
 <p>server url : http://localhost:4000</p>
