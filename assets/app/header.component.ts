@@ -4,9 +4,9 @@ import { Component } from '@angular/core';
     selector: 'my-header',
     template: `
         <ul class="nav nav-pills">
-            <li><a routerLinkActive="active" [routerLink]="['/search']">Search</a></li>
-            <li><a routerLinkActive="active" [routerLink]="['/recent']">Recent Searches</a></li>
-            <li><a routerLinkActive="active" [routerLink]="['/results']">Results</a></li>
+            <li routerLinkActive="active" [routerLink]="['/search']"><a>Search</a></li>
+            <li routerLinkActive="active" [routerLink]="['/recent']"><a>Recent Searches</a></li>
+            <li routerLinkActive="active" [routerLink]="['/results']"><a>Results</a></li>
         </ul>
     `
 })
