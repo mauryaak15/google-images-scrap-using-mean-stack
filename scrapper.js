@@ -1,6 +1,7 @@
 module.exports = {
     scrapper : (query, req, response) => {
                     var Scraper = require ('images-scraper'),
+                    scraper = require('./scraper_logic'),
                     google = new Scraper.Google(),
                     fs = require('fs'),
                     Jimp = require("jimp");
@@ -87,27 +88,10 @@ module.exports = {
                                 });
                             }
                     
-                    
-                    google.list({
-                        keyword: query,
-                        num: 15,
-                        detail: true,
-                        
-                    })
-                    .then(function (res) {
-                        console.log('first 10 results from google', res);
-                        // res.forEach((image, index) => {
-                        //     var ext = image.type.substring(6);
-                        //     console.log(`${image.url}\n`);
-                        //     var dir = `./images/${query}/`;
-                        //     var path = `${dir}${Math.floor((Math.random() * 10000) + 1).toString()}.${ext}`;
-                        //     if (!fs.existsSync(dir)){
-                        //         fs.mkdirSync(dir);
-                        //     }
-                        //     download(image.url, path, function(){
-                        //             console.log('done: '+path+' :: '+res.length+':: '+index);
-                        //         });	
-                        // });
+                    scraper.fetch(
+                        { q: query, tbm: 'isch' }
+                    ).then((res) => {
+                        console.log('first 15 results from google', res);
                         var ac = res.map(download);
                         var final = Promise.all(ac);
                         final.then((msg) => {
@@ -123,14 +107,13 @@ module.exports = {
                             message: 'Scrapping and image processing success',
                             obj: null
                         });
-                      
-
-                    }).catch(function(err) {
+                    }).catch((err) => {
                         console.log('err', err);
                         response.status(500).json({
                             title: 'An error occurred while scrapping',
                             error: err
                         })
-                    });
+                    })
+                    
                 }
         }
